@@ -1,0 +1,508 @@
+
+FORMATION VUEJS
+
+https://sharemycode.fr/aaa
+
+https://excalidraw.com/#room=e6e108fa6cc805ac1c2d,wxd3dhImHXdWt1uNX_IefA
+
+salut c'est moi
+
+
+
+Antoine, 35 ans, bac+5  en sciences du langage, ancien prof de français en reconversion, aucune notion en JS avant la formation (ant.tassin@gmail.com)
+
+-Emeric Rakotondrahaja, 34ans, bac+5 création numérique, Artiste indépendant, en découverte du Js
+
+-Sedki REKIK  Bac+3  , technicien réseaux informatique, développeur web et web mobil
+
+-Leith ZNIBER, master en biochimie, niveau moyen en JS (je me rappelle pas tres bien de tout(pas assez pratiqué))
+
+-Yannis Billon, 21ans, DUT informatique, base en JS (manque de pratique)
+
+-Marine Jacobs 30 ans, Titre de développeur web et web mobile, niveau intermédiaire en JS
+
+-Cédric BOUTTES, 49 ans, Bac+5 ingénieur en développement logiciel, profil surtout backend java springboot, python, base de données ... et débutant Front-end Angular, ...
+
+-Mélanie Richard, 28 ans graphiste chaudronnière,  découverte en JS
+
+-Pierre Alves, 27ans, bac+5 en ergonomie, aucune notion de JS avant la formation, débutant
+
+-saikou Ba  master en Lettres Modernes  en reconversion dans le développement, des notions en javascript.
+
+-Nicolas 26 ans, bac+5 en thermique/energie, débutant en JS
+
+-Radonirina (Rad) Andriamihaja bac+4 maths appliquées , reconversion , découverte JS
+
+-Thierry, BTS Informatique de Gestion + 2 années de formations longues additionnelles. Développeur web plutôt Back-end en PHP;./ MySQL /Javascript
+
+-Mykhaylo Pelykh, 25 ans, intermediare en js
+-Aimé Magnanga Boudzanga,master 2 en géologie  obtenu a l' université Paul Sabatier de Toulouse, enseignant en cours particulier ,en reconversion professionnelle
+
+RESOURCES
+Les Arrays :
+https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array
+Les méthodes de String
+https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String
+Failles XSS :
+https://fr.wikipedia.org/wiki/Cross-site_scripting
+Classe Math de JS :
+https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Math
+
+
+foreach
+/*
+le foreach est une méthode de Array qui prend en parametre une fonction qui s'excecute pour
+chaqeu element du tableau
+l'element du tableau
+l'index
+le tableau
+*/
+
+
+VUEJS
+
+Qu’est-ce que Vue.js ?
+Vue.js est un framework progressif pour JavaScript utilisé pour créer des interfaces Web et des applications d'une page (SPA). Vue.js peut également être utilisé pour le développement d'applications de bureau et mobiles avec les frameworks Ionic et Electron.
+
+Quelle type d’application ?
+Lorsque qu’on se lance dans le développement d’une application il est important de savoir sur quelle type d’architecture logicielle on souhaite la développer.
+Ici deux cas :
+
+
+Ce type d’architecture couvre environ 60% des besoins réelles. L’application est développer avec un langage serveur du type PHP, Java ,C# etc
+
+Ce type d’AL nous permet d’isoler le back-end sous forme de Web Service (Api) qui nous renvoi nos pages sous formes de JSON
+Nous pouvons utiliser le back end pour plusieurs front-end
+Client Side Rendering (CSR)
+Les SPA sont par défaut en Client Side Rendering et c’est grâce à cela qu’on obtient des applications aussi performantes.
+
+
+Etape 1 : Une réponse presque vide est envoyé au navigateur avec une structure HTML minimal.
+Etape 2: Le navigateur va charger tout le javascript à partir du serveur.
+Etape 3: Le navigateur va exécuter le tout l’application JS et hydrater les pages HTML avec les
+données chargées.
+Avantages :
+Le JS est chargé une seule fois .
+Vitesse de chargement des autres pages quasi instantanée Inconvénients:
+Chargement de la première page plus long
+Mauvais référencement car page HTML minimal(config possible)Server Side Rendering (SSR)
+Deuxième type de chargement avec le Server Side Rendering.
+
+Etape 1 : Une réponse est envoyé au navigateur avec une structure HTML avec les données.
+Etape 2: Le navigateur rend la première page consultable et telecharge le JS
+Etape 3: Le navigateur va exécuter le Js.
+Avantages :
+La première page va avoir un chargement rapide .
+Meilleur référencement
+Bon pour les sites statiquesInconvénients:
+Chargement complet des autres pages à chaque foisIntégrez des liens
+https://vuejs.org/guide/scaling-up/ssr.html
+
+
+
+CDN
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+CDN BOOTSTRAP
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+EXTENTIONS
+sur Emmet dans parametre ajouter
+
+vue-html : html
+vue: html
+
+Vue Language Features (Volar)
+Vue VSCode Snippets
+
+EXERCICE 1
+
+filtre et palindrome (mot qui çe lit dans les deux sens )
+exemple kayak
+Creer un filtre qui renvoi "value est un palindrome"
+sinon "value n'est un palindrome"
+
+<p>{{val | isPalindrome }} </p>
+
+
+<input class="form-control" type="text"
+                  placeholder="Entrer votre reponse"
+                  v-model="value"
+                  >
+        <p>{{value | isPalindrome}}</p>
+
+Vue.filter('isPalindrome', function(value) {
+            let val = value;
+            if(val != "" && val.split('').reverse().join('') == val) {
+                return  value + ' est un palindrome'
+            } else {
+                return value + " nest pas un palindrome"
+            }
+        })
+
+const app = new Vue({
+            el: "#app",
+            data : {
+                title: "mon super titre",
+                title2: "blaBBBla",
+                value : '',
+             },
+
+EXERCICE 2
+
+VideoGame
+
+part 1 :
+    - créer une nouvelle page html (exercice.html)
+    . créer une liste de jeux à afficher dans un tableau
+    1 on affiche juste les titre
+    2 on affiche des objets
+
+    Votre objet prendra en param id; titre, date, isPlayed(bool)
+    si le jeu à déja été fait vous m'afficher "deja jouer" en vert
+    sinon "pas encore jouer" en rouge
+
+
+Part 2 :
+    ajouter une methode qui change le statue du jeu  quand je clique dessus
+    Formulaire pour pouvoir ajouter des nouveau jeux (par defaut le statue isPlayed a false)
+    message de success lorsque le jeu a bien été
+    Bonus : Ajout d'un bouton pour supprimer un jeu de ma liste
+
+PROJET COMPLET PARTI 1
+    https://fromsmash.com/IBMJ-D6d6c-ct
+
+
+
+ DABLOG
+
+dépôt Github
+https://github.com/Boudj31/daablog
+
+Installation de node js (v-16)
+https://nodejs.org/en/
+
+Documentation officiel :
+https://v2.vuejs.org/v2/guide/
+
+Installation du CLI vue
+[<https://cli.vuejs.org/#getting-started>](<https://cli.vuejs.org/#getting-started>)
+
+npm install -g @vue/cli
+entrer
+npm config get prefix
+dans le cmd
+copier le chemin retourné et l'ajouter dans le path
+
+---------------------------------------------------------------------------------------------------------------------------
+Télécharge un fichier *.msi
+https://nodejs.org/en/download/
+
+--> node 16.18
+
+invite de commmande :
+npm install -g @vue/cli
+
+powershell ADMIN :
+    vue
+
+Creation du projet vueJS
+Pour ceux qui nous pas git installer
+https://git-scm.com/downloads
+
+telecharger invite de commande Hyper
+https://hyper.is/
+
+on lance la commande
+
+vue create dablog
+
+ouvrir vscode et ouvrir le fichier dablog
+ouvrir le terminal de VsCode
+lancer la commande
+
+npm run serve
+
+suuprmier fichier vue.config.js
+dans src/ component/ supprimer HelloWord.vue
+dans App.vue -> supprimer l'import de Hello word
+dans template on garde <div id="app"> </div>
+supprimmer HelloWord dans l'objet Component
+
+Arborescence du dossier
+
+installation de talwind css
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+package.json (liste des packages à installé dans le projet)
+https://www.npmjs.com/
+
+nodes-modules (package node installé)
+index.html (fichier racine)
+main.js (point d'entrée de l'application)
+App.vue (contient la div avec #app et correspond au fichier le plus haut de notre application)
+Dossier view (va contenir les Vues)
+Dossier components (va contenir les composants réutilisable)
+Dossier utils (tout les fichiers ne justifiant pas un nom de dossier)
+
+
+Template vide
+
+<template lang="">
+    <div>
+
+    </div>
+</template>
+<script>
+export default {
+
+}
+</script>
+<style lang="">
+
+</style>
+
+dans package.json
+remplacer ligne 36 par
+"rules": {
+  "vue/multi-word-component-names": "off"
+
+}
+
+Installation du router
+npm install vue-router@3.5.1
+
+Hello ! Je vous conseille d'utiliser :
+
+//Outils de comparaison de fichier
+//=> Permettent de comparer deux fichiers
+(ex : votre fichier local App.vue qui marche pas et le App.vue que Rachid a mis dans sharemycode ;-))
+//=> Peuvent même comparer le contenu de deux répertoires et mettre en évidence les fichiers qui diffèrent
+
+Au choix :
+Beyond Compare (mon préféré en version d'évaluation) :
+https://www.scootersoftware.com/
+WinMerge  (gratuit) :
+https://winmerge.org/?lang=fr
+
+Cédric BOUTTES
+
+
+Exercice Les 4 derniers articles
+créer un composant Post
+qui affichera :
+    - le titre
+    - l'image
+    - la categorie
+    - la description
+
+    la description doit être limité a 150 caractères avec (...) a la fin pour indiquer que la description n'est pas finie
+    afficher dans la page HOME  4 articles (derniers articles)
+
+
+
+<template>
+
+ <div class="mt-8">
+
+                    <h4 class="text-6xl text-slate-900">{{post.title}}</h4>
+                    <img :src="post.image">
+                    <h6 class="text-2xl text-indigo-500 my-3">{{post.category}}</h6>
+                    <p class="text-lg"> {{post.content}}</p>
+
+                </div>
+
+
+
+</template>
+<script>
+export default {
+    name:'Post',
+    props:["post"]
+
+}
+</script>
+<style >
+
+</style>
+
+//Post
+
+<template>
+    <div>
+        <div class="mt-8">
+                <!-- <h2 class="text-6xl text-slate-900">toto</h2> -->
+                <h2 class="text-6xl text-slate-900">{{post.title}}</h2>
+                <img :src="post.image" alt="Name in the site" />
+                <h3 class="text-2xl text-indigo-500 my-3">{{post.category}}</h3>
+                <p class="text-lg">{{post.content}}</p>
+        </div>
+    </div>
+</template>
+<script>
+
+export default {
+    name: 'Post',
+    props: ["post"]
+}
+</script>
+<style>
+
+</style>
+
+Exercice 1  :
+Créer une barre de recherche qui filtre les articles sans recharger la page selon le titre ou la description
+afficher un bouton X pour remettre le formulaire à 0 et remettre tout les articles
+Si pas de résultat afficher pas de résultat
+afficher le nombre de résultat
+Bonus : créer un select pour filtrer par catégorie d'article
+
+Exercice 2 :
+
+    - Faire une modal avec un formulaire pour ajouter un nouvel article
+    - ce formulaire à tous ces champs obligatoires
+    - Faire un chargement (spinner ou text : chargement en cours) pendant 3 second
+    - Si c'est un succès afficher une pop-up en verte avec le texte (article ajouter avec succes)
+
+
+Installation postman
+https://www.postman.com/
+
+_______________________________________________________
+
+LES PROMESSES (Promise)
+
+Les promesses nous donnent la capacité de savoir quand une tache est finis et nous redonnent le contrôle du programme pour décider de l’action suivante.
+
+Une petite histoire pour comprendre
+Imaginons un scénario pour comprendre la puissance des promesses :
+Je marche dans la rue puis soudain je me souviens que je n’est plus de capsules de café , je me rend donc a Nespresso.
+Le vendeur m’accueille gentiment et je commande donc une vingtaine de capsules.
+Je paie donc le montant affiché et le vendeur me donne en retour un reçu avec le numéro de commande.
+Ce reçu est une promesse entre moi et le vendeur qui m’indique si je vais recevoir mes capsules ou si un problème est survenu ou encore si il y a rupture de stock  d’un ou plusieurs articles (je pourrai alors demander un remboursement ou un remplacement).
+
+Avec ce cas on comprend que cette promesse nous permet de voir les futurs valeurs afin de nous dire si cela sera un success ou bien un échec.
+Bon les promesses en JS sont un peu plus complexes que cela mais voyons comment elle se définies en code.
+
+let promise = new Promise((resolve, reject)) {
+    // ce code il va prendre un temps d'execution
+    }
+
+    Comment changer le statut de cette Promise ?
+resolve(value) => // si le code est execute avec success , il va me retouner le resulat que j'attend
+// je recevoir mes capsules
+
+reject(error) : retourne une erreur
+// une mauvaise nouvelle
+
+(illustration prossesse)
+
+L’objet promesse possède un constructor avec les valeurs state (pending par défaut) et result (undefined)
+
+//capsule disponible ?
+let capsuleDispo = true
+
+let demandeCapsule = new Promise((resolve, reject ) => {
+    if(capsuleDispo) {
+        setTi
+        resolve("Voici vos capsules")
+        } else {
+            reject("Désolé le paiment à pas été accepté")
+            }
+    })
+    console.log(demandeCapsule)
+
+    state: pending
+    result: undefined
+
+    then() => lorsque ma promesse est resolu , je vais acceder au resultat
+    catch() => lorsque va etre rejete , je vais pouvoir acceder au infos de l'erreur
+    finally() =>sera retrouner dans tous les cas
+
+
+    let capsuleDispo = true
+
+Exemple
+
+let demandeCapsule = new Promise((resolve, reject) => {
+    // ajout de 3 second de delais
+    setTimeout(() => {
+        if(capsuleDispo) {
+            resolve("Voici vos capsule !")
+        } else {
+            reject("Désole")
+        }
+    }, 5000)
+}).then(() => {
+    console.log("je peux avoir une poche avec")
+}).catch(() => {
+    console.log("je vais me mettre au thé finalement")
+}).finally(() => {
+    console.log("What else ? ")
+})
+console.log(demandeCapsule)
+
+// avant les 5 s
+// undefined
+// apres les 5 s
+// "Voici vos capsule !"
+// "je peux avoir une poche avec"
+// "What else"
+
+
+_______________________________________________________
+
+LES REQUETE HTTP
+
+4 Verbes d'action a connaitre
+
+GET : demande au serveur de me fournir une reponse // code 200(ok)
+POST: envoi des donnée au serveur // code 201 (created)
+PUT: modifier des donnée // code 201
+DELETE: supprimer une donnée du serveur // 200(ok)
+
+500 : internal error serveur
+400: BAD REQUEST
+401: UNAUTHORIZED
+ 403: FORBIDDEN
+ 404 : Not found
+
+https://jsonplaceholder.typicode.com/posts
+----------------------------------------------------------------------------------------------
+
+VueX
+Gérer les données dans l’application web Vuejs est plus difficile qu’il n’y parait .
+Au début,  la logique de passation de propriétés entre composant parent-enfant fonctionne  mais face à la multitude des pages : on se retrouve vite déborder pour passer une propriété à 10 enfants.
+Pour résoudre ce soucis et centralisé certaines données pour les rendre accessible depuis n’importe composant on va utiliser le pattern VUEX de vuejs .
+Les données vont être stocker  dans un store (magasin) découpée en différents modules (tranches) inter communicantes et accessible dans n’importe quelle composant
+
+(illustration)
+
+La vue appelle les actions qui déclenchent un changement du state et provoque le rechargement de la vue.
+
+npm install vuex@3.6.2
+
+Appel du store
+
+this.$store.state.posts // fait appel a mon state
+this.$store.getters.postsPublic // fait appel a mes getters
+this.$store.commit("SET_POSTS", posts) // fait appel a mes mutations
+this.$store.dispatch("loadPost") // fait appel a mes actions
+
+Map
+...mapState(["posts"])
+...mapGetters(["postsPublic"])
+...mapMutations["SET_POST"])
+...mapActions(["loadPosts"])
+
+
+Documentation officelle
+https://vuex.vuejs.org/
+
+
+
+
+
+
+
